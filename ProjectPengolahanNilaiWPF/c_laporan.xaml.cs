@@ -105,15 +105,24 @@ namespace ProjectPengolahanNilaiWPF
         {
             if (kueri != "")
             {
-                k.sql = kueri;
-                k.setdt();
+                try
+                {
+                    k.sql = kueri;
+                    k.setdt();
 
-                var ctk = new CetakNilai();
-                ctk.SetDataSource((DataTable)k.dt);
 
-                var wctk = new w_Cetak();
-                wctk.ReportViewer1.ViewerCore.ReportSource = ctk;
-                wctk.ShowDialog();
+                    var ctk = new CetakNilai();
+                    ctk.SetDataSource((DataTable)k.dt);
+
+                    var wctk = new w_Cetak();
+                    wctk.ReportViewer1.ViewerCore.ReportSource = ctk;
+                    wctk.ShowDialog();
+                }
+                catch(Exception err)
+                {
+                    Console.WriteLine("{0} Exception caught.", err);
+                }
+                
             }
             else
             {

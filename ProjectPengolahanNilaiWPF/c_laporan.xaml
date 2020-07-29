@@ -116,6 +116,9 @@
                                 </TextBlock>
                             </StackPanel>
                         </Button>
+                        <Label x:Name="test_lb">
+                            test
+                        </Label>
                     </StackPanel>
                     
 

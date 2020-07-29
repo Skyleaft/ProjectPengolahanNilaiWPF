@@ -54,11 +54,11 @@
         <StackPanel Grid.ColumnSpan="3" Margin="10,10,0,2.6">
             <TextBlock
 	        Style="{StaticResource MaterialDesignHeadlineTextBlock}">
-	        Aplikasi Pengolahan Nilai 2018
+	        Aplikasi Pengolahan Nilai 2020
             </TextBlock>
-            <TextBlock>Versi 0.21.18</TextBlock>
+            <TextBlock>Versi 0.1</TextBlock>
         </StackPanel>
 
-        <TextBlock Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="50,0.8,0,0">@Copyright 2018 Milzan Malik</TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0.8,0,0">@Copyright 2020</TextBlock>
     </Grid>
 </metro:MetroWindow>

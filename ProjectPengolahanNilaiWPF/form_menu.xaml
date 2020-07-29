@@ -828,7 +828,7 @@
                                             <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0.5}">
                                                 <metro:Tile
                                                     x:Name="tile_pegawai"
-                                                    Title="Data Pegawai"
+                                                    Title="Data Guru"
                                                     Click="btn_pegawai_Click">
                                                     <metro:Tile.Effect>
                                                         <DropShadowEffect
