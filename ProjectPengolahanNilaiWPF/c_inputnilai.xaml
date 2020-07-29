@@ -1,0 +1,376 @@
+﻿<UserControl x:Class="ProjectPengolahanNilaiWPF.c_inputnilai"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectPengolahanNilaiWPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d" 
+             d:DesignHeight="670" d:DesignWidth="1300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <materialDesign:DialogHost>
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Margin="16">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="Message" 
+                   Margin="0 6 0 0"
+                   FontSize="18" Grid.Row="0">
+                    Yakin Hapus Data : ?
+                </TextBlock>
+                <Button x:Name="btn_yes" Grid.Row="1" 
+                IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Right"
+                Margin="16 16 16 0" Click="btn_yes_Click"
+                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                    Ya
+                </Button>
+                <Button Grid.Row="1" 
+                IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Right"
+                Margin="16,16,70,0"
+                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                    Tidak
+                </Button>
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="399*"/>
+                <RowDefinition Height="271*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Margin="10,10,4.6,9.2">
+                <StackPanel materialDesign:RippleAssist.IsCentered="True" Orientation="Horizontal"
+                            Margin="10,5,0,5" 
+                            HorizontalAlignment="Left" DockPanel.Dock="Top">
+                    <materialDesign:ColorZone
+				        Margin="0"
+				        Padding="8,4,8,4"
+				        Panel.ZIndex="1"
+				        materialDesign:ShadowAssist.ShadowDepth="Depth1"
+				        CornerRadius="2"
+				        Mode="Standard">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                            </Button>
+                            <TextBox x:Name="txt_cari"
+						        Grid.Column="1"
+						        MinWidth="200"
+						        Margin="8,0,0,0"
+						        VerticalAlignment="Center"
+						        materialDesign:HintAssist.Hint="Cari Data"
+						        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+						        BorderThickness="0" PreviewTextInput="txt_cari_PreviewTextInput" />
+                            <Button Grid.Column="2" Style="{DynamicResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon
+							Margin="8,0,0,0"
+							Kind="Microphone"
+							Opacity=".56" />
+                            </Button>
+                        </Grid>
+                    </materialDesign:ColorZone>
+                </StackPanel>
+
+                <ScrollViewer DockPanel.Dock="Bottom">
+                    <StackPanel>
+                        <DataGrid x:Name="dg_sisw"
+                    materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+	                materialDesign:DataGridAssist.ColumnHeaderPadding="30 8 20 8"
+	                AutoGenerateColumns="False"
+	                CanUserAddRows="False"
+	                CanUserSortColumns="True" CanUserResizeRows="False" IsReadOnly="True" Margin="0" SelectionChanged="dg_sisw_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding nis}" Header="NIS" />
+                                <DataGridTextColumn Binding="{Binding nama}" Header="Nama" />
+                                <DataGridTextColumn Binding="{Binding jenis_kelamin}" Header="Jenis Kelamin" />
+                                <DataGridTextColumn Binding="{Binding nama_kelas}" Header="Kelas" />
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </StackPanel>
+                </ScrollViewer>
+
+
+            </DockPanel>
+
+            <DockPanel Grid.Column="1" Margin="5.4,10,10,9.2">
+
+                <DockPanel DockPanel.Dock="Top">
+
+                    <materialDesign:Card HorizontalAlignment="Left" Margin="5,0,0,0">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon
+                                Margin="4,0"
+                                HorizontalAlignment="Center"
+                                Foreground="{Binding BorderBrush, ElementName=txt_nis}"
+                                Kind="AccountCardDetails" Width="25" Height="25" VerticalAlignment="Stretch" />
+                                    <TextBox
+                                x:Name="txt_nis"
+                                IsReadOnly="True"
+	                            materialDesign:HintAssist.Hint="NIS"
+	                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Margin="5,0,0,0" MaxLength="20" Width="230
+                            "/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_nama}"
+                Kind="Account" Width="25" Height="25" VerticalAlignment="Stretch" />
+                                    <TextBox
+                x:Name="txt_nama"
+                IsReadOnly="True"
+	            materialDesign:HintAssist.Hint="Nama"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Width="230
+                            " Margin="5,0,0,0" MaxLength="40">
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_kls}"
+                Kind="ViewGrid" Width="25" Height="25" VerticalAlignment="Stretch" />
+                                    <TextBox
+                                x:Name="txt_kls"
+                                IsReadOnly="True"
+	                            materialDesign:HintAssist.Hint="Kelas"
+	                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Width="80" Margin="5,0,0,0" MaxLength="40">
+                                    </TextBox>
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </StackPanel>
+                    </materialDesign:Card>
+
+                    <DockPanel DockPanel.Dock="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button x:Name="btn_baru"
+	            Style="{StaticResource MaterialDesignFlatButton}"
+	            ToolTip="MaterialDesignFlatButton" Margin="0,0,5,0" Click="btn_baru_Click">
+                            Baru
+                        </Button>
+                    </DockPanel>
+                </DockPanel>
+
+
+
+                <DockPanel DockPanel.Dock="Bottom">
+                    <StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                            <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_kdnilai}"
+                Kind="AlertBox" Width="25" Height="25" VerticalAlignment="Stretch" />
+                            <TextBox
+                x:Name="txt_kdnilai"
+                IsReadOnly="True"
+	            materialDesign:HintAssist.Hint="Kode Nilai"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Width="230
+                            " Margin="5,0,0,0" MaxLength="40">
+                            </TextBox>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="15,20,15,0" VerticalAlignment="Top">
+                            <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=dp_tglul}"
+                Kind="Calendar" Width="25" Height="25" VerticalAlignment="Stretch" />
+                            <DatePicker x:Name="dp_tglul" 
+	                materialDesign:HintAssist.Hint="Tanggal Ulangan"
+	                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                    Margin="5,0,0,0" FontSize="13" Height="29" />
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                            <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=cmb_jenis}"
+                Kind="FileDocumentBox" Width="25" Height="25" VerticalAlignment="Stretch" />
+                            <ComboBox
+	                x:Name="cmb_jenis"
+	                Width="121"
+	                Margin="5,0,0,0"
+	                materialDesign:HintAssist.Hint="Jenis Ulangan"
+	                IsEditable="False"
+	                Style="{StaticResource MaterialDesignFloatingHintComboBox}" VerticalAlignment="Stretch">
+                                <ComboBoxItem Content="Ulangan Harian"/>
+                                <ComboBoxItem Content="UTS"/>
+                                <ComboBoxItem Content="UKK"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="15,15,15,0" VerticalAlignment="Top">
+                            <materialDesign:PackIcon
+                    Margin="4,0"
+                    HorizontalAlignment="Center"
+                    Kind="BookOpen" Width="25" Height="25" VerticalAlignment="Stretch" Foreground="#FF747474" />
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton 
+                            x:Name="rb_teori"
+	                        Style="{StaticResource MaterialDesignRadioButton}"
+	                        Tag="True" Margin="5,5,0,5">
+                                    Teori
+                                </RadioButton>
+                                <RadioButton
+                            x:Name="rb_praktek"
+	                        Style="{StaticResource MaterialDesignRadioButton}"
+	                        Tag="True" Margin="10,5,0,5">
+                                    Praktek
+                                </RadioButton>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <StackPanel Margin="0,0,20,0">
+                        <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                            <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=cmb_mapel}"
+                Kind="FileDocumentBox" Width="25" Height="25" VerticalAlignment="Stretch" />
+                            <ComboBox
+	                x:Name="cmb_mapel"
+	                Width="121"
+	                Margin="5,0,0,0"
+	                materialDesign:HintAssist.Hint="Mata Pelajaran"
+	                IsEditable="False"
+	                Style="{StaticResource MaterialDesignFloatingHintComboBox}" VerticalAlignment="Stretch" SelectionChanged="cmb_mapel_SelectionChanged">
+
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                            <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_kkm}"
+                Kind="Textbox" Width="25" Height="25" VerticalAlignment="Stretch" />
+                            <TextBox
+                x:Name="txt_kkm"
+                IsReadOnly="True"
+	            materialDesign:HintAssist.Hint="KKM"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Width="70" Margin="5,0,0,0" MaxLength="3">
+                            </TextBox>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                            <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_nilai}"
+                Kind="Textbox" Width="25" Height="25" VerticalAlignment="Stretch" />
+                            <TextBox
+                x:Name="txt_nilai"
+	            materialDesign:HintAssist.Hint="Nilai"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Width="70" Margin="5,0,0,0" MaxLength="3" PreviewTextInput="txt_nilai_PreviewTextInput" TextChanged="txt_nilai_TextChanged">
+                            </TextBox>
+                        </StackPanel>
+
+                        <StackPanel Margin="20,10,0,0" Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}" Margin="0,0,5,0" VerticalAlignment="Center">Grade</TextBlock>
+                            <TextBlock x:Name="txt_grade" Style="{StaticResource MaterialDesignDisplay1TextBlock}"></TextBlock>
+                        </StackPanel>
+
+
+                    </StackPanel>
+                    <DockPanel Margin="0" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button 
+                        x:Name="btn_simpannilai"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                        ToolTip="Simpan" Click="btn_simpannilai_Click" Margin="10,0">
+                            <materialDesign:PackIcon Kind="ContentSave"/>
+                        </Button>
+                        <materialDesign:PopupBox
+	                    PlacementMode="BottomAndAlignLeftEdges"
+	                    Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+	                    ToolTip="Tool"
+	                    ToolTipService.Placement="Right"
+	                    UnfurlOrientation="Vertical">
+                            <StackPanel Orientation="Vertical" >
+                                <Button x:Name="btn_ubah" ToolTip="Ubah Data" Click="btn_ubah_Click" IsEnabled="False">
+                                    <materialDesign:PackIcon Kind="Pencil" />
+                                </Button>
+                                <Button x:Name="btn_hapus" 
+                                    ToolTip="Hapus" 
+                                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                    IsEnabled="False" Click="btn_hapus_Click" >
+                                    <materialDesign:PackIcon Kind="Delete"/>
+                                </Button>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                    </DockPanel>
+                </DockPanel>
+
+
+            </DockPanel>
+
+            <DockPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.8,0,0.4">
+                <ScrollViewer>
+                    <DockPanel Margin="10,0,0,6">
+                        <DataGrid x:Name="dg_nilai"
+                    materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+	                materialDesign:DataGridAssist.ColumnHeaderPadding="10 8 20 8"
+	                AutoGenerateColumns="False"
+	                CanUserAddRows="False"
+	                CanUserSortColumns="True" CanUserResizeRows="False" IsReadOnly="True" Margin="0" SelectionChanged="dg_nilai_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding kd_nilai}" Header="Kode Nilai" />
+                                <DataGridTextColumn Binding="{Binding nis}" Header="NIS" />
+                                <DataGridTextColumn Binding="{Binding nama}" Header="Nama" />
+                                <DataGridTextColumn Binding="{Binding nama_mapel}" Header="Mapel" />
+                                <DataGridTextColumn Binding="{Binding tanggal, StringFormat=\{0:dd-MM-yyyy \}}" Header="Tanggal Ulangan" />
+                                <DataGridTextColumn Binding="{Binding jenis}" Header="Jenis Ulangan" />
+                                <DataGridTextColumn Binding="{Binding tipe_ujian}" Header="Tipe Ulangan" />
+                                <DataGridTextColumn Binding="{Binding nilai}" Header="Nilai" />
+                                <DataGridTextColumn Binding="{Binding grade}" Header="Grade" />
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </DockPanel>
+                </ScrollViewer>
+            </DockPanel>
+        </Grid>
+    </materialDesign:DialogHost>
+</UserControl>

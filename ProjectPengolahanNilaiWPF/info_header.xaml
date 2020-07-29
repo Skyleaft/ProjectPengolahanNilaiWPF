@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="ProjectPengolahanNilaiWPF.info_header"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectPengolahanNilaiWPF"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                    TextElement.FontWeight="Regular"
+                    TextElement.FontSize="13"
+                    TextOptions.TextFormattingMode="Ideal"
+                    TextOptions.TextRenderingMode="Auto"
+                    FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="1000">
+    <StackPanel x:Name="pn_header" Orientation="Horizontal">
+        <materialDesign:Card HorizontalAlignment="Left" Margin="10,5,0,10">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:ColorZone 
+                                                            VerticalAlignment="Top" 
+                                                            HorizontalAlignment="Left"
+                                                            Mode="PrimaryLight" Margin="0">
+                    <StackPanel>
+                        <Ellipse Width="140" Height="140" Margin="10">
+                            <Ellipse.Fill>
+                                <ImageBrush x:Name="fotousr" ImageSource="Resource/bg-red.png" Stretch="UniformToFill" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </StackPanel>
+                </materialDesign:ColorZone>
+
+                <StackPanel VerticalAlignment="Center" Margin="10,0">
+                    <TextBlock 
+                                                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                        TextAlignment="Center" Margin="0,0,0,5" HorizontalAlignment="Center">
+                                                    Informasi User
+                    </TextBlock>
+                    <Grid VerticalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock 
+                                                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                            TextAlignment="Center" Margin="4,0,2,0" HorizontalAlignment="Left">
+                                                        Nama User
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                                   TextAlignment="Center" Margin="5,2,0,0" HorizontalAlignment="Left" Grid.Row="1">
+                                                        NIP User
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                           TextAlignment="Center" Margin="5,2,0,0" HorizontalAlignment="Left" Grid.Row="2">
+                                                         Hak Akses
+                        </TextBlock>
+                        <TextBlock 
+                            
+                                                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                    TextAlignment="Center" Margin="2,0,5,0" Grid.Column="1">
+                                                        :
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                           TextAlignment="Center" Margin="2,2,5,0" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1">
+                                                        :
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                           TextAlignment="Center" Margin="2,2,5,0" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1">
+                                                        :
+                        </TextBlock>
+                        <TextBlock x:Name="txt_namausr" 
+                            
+                                                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                    TextAlignment="Center" HorizontalAlignment="Left" Grid.Column="2" Margin="0">
+                                                        Nama
+                        </TextBlock>
+                        <TextBlock x:Name="txt_nipusr" Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                           TextAlignment="Center" Margin="0,2,0,0" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2">
+                                                        Nip User
+                        </TextBlock>
+                        <TextBlock x:Name="txt_hakusr" Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                                           TextAlignment="Center" Margin="0,2,0,0" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2">
+                                                        Hak Akses
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <metro:Tile x:Name="tile_jmlpeg" Count="0" Title="Jumlah Pegawai" Height="160" Width="150" Margin="50,0,0,10">
+            <materialDesign:PackIcon Kind="AccountMultiple" Width="50" Height="50" Margin="0,0,10,0"/>
+        </metro:Tile>
+        <metro:Tile x:Name="tile_jmlsis" Count="0" Title="Jumlah Siswa" Height="160" Width="150" Margin="5,0,0,10">
+            <materialDesign:PackIcon Kind="AccountMultiple" Width="50" Height="50" Margin="0,0,10,0"/>
+        </metro:Tile>
+    </StackPanel>
+</UserControl>

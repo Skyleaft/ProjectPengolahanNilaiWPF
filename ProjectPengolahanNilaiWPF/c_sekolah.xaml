@@ -1,0 +1,175 @@
+﻿<UserControl x:Class="ProjectPengolahanNilaiWPF.c_sekolah"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectPengolahanNilaiWPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d" 
+             d:DesignHeight="670" d:DesignWidth="1300">
+    <Grid>
+        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+
+            <DockPanel Margin="0,20,0,0" DockPanel.Dock="Top">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_kdsklh}"
+                Kind="School" Width="25" Height="25" VerticalAlignment="Stretch" />
+                        <TextBox
+                x:Name="txt_kdsklh"
+	            materialDesign:HintAssist.Hint="Kode Sekolah"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Margin="5,0,0,0" MaxLength="20" Width="279"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_namasklh}"
+                Kind="School" Width="25" Height="25" VerticalAlignment="Stretch" />
+                        <TextBox
+                x:Name="txt_namasklh"
+	            materialDesign:HintAssist.Hint="Nama Sekolah"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Margin="5,0,0,0" MaxLength="80" Width="279"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_alamat}"
+                Kind="MapMarker" Width="25" Height="25" VerticalAlignment="Stretch" />
+                        <TextBox
+                x:Name="txt_alamat"
+	            materialDesign:HintAssist.Hint="Alamat Sekolah"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Margin="5,0,0,0" MaxLength="100" Width="279"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_kota}"
+                Kind="MapMarker" Width="25" Height="25" VerticalAlignment="Stretch" />
+                        <TextBox
+                x:Name="txt_kota"
+	            materialDesign:HintAssist.Hint="Kab./Kota"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Margin="5,0,0,0" MaxLength="30" Width="279"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_kec}"
+                Kind="MapMarker" Width="25" Height="25" VerticalAlignment="Stretch" />
+                        <TextBox
+                x:Name="txt_kec"
+	            materialDesign:HintAssist.Hint="Kecamatan"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Margin="5,0,0,0" MaxLength="30" Width="279"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_kdpos}"
+                Kind="MapMarker" Width="25" Height="25" VerticalAlignment="Stretch" />
+                        <TextBox
+                x:Name="txt_kdpos"
+	            materialDesign:HintAssist.Hint="Kode POS"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Margin="5,0,0,0" MaxLength="20" Width="100" PreviewTextInput="txt_kdpos_PreviewTextInput"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_kepalasklh}"
+                Kind="Account" Width="25" Height="25" VerticalAlignment="Stretch" />
+                        <TextBox
+                x:Name="txt_kepalasklh"
+	            materialDesign:HintAssist.Hint="Kepala Sekolah"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Margin="5,0,0,0" MaxLength="40" Width="279" IsReadOnly="True"/>
+                    </StackPanel>
+                    
+
+                    <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_nip}"
+                Kind="AccountCardDetails" Width="25" Height="25" VerticalAlignment="Stretch" />
+                        <TextBox
+                x:Name="txt_nip"
+	            materialDesign:HintAssist.Hint="NIP"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Margin="5,0,0,0" MaxLength="20" Width="279" IsReadOnly="True"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="15,10,15,0" VerticalAlignment="Top">
+                        <materialDesign:PackIcon
+                Margin="4,0"
+                HorizontalAlignment="Center"
+                Foreground="{Binding BorderBrush, ElementName=txt_notelp}"
+                Kind="Phone" Width="25" Height="25" VerticalAlignment="Stretch" />
+                        <TextBox
+                x:Name="txt_notelp"
+	            materialDesign:HintAssist.Hint="Nomor Telepon"
+	            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="13" Margin="5,0,0,0" MaxLength="20" Width="279"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel Margin="15,0,0,0">
+                    <TextBlock
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}" Margin="0,15,0,0">
+                        Logo Sekolah
+                    </TextBlock>
+                    <materialDesign:Card
+	                materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,2,0,5" Padding="0">
+                        <Image x:Name="img_foto" Width="150" Height="150" Margin="0"/>
+                    </materialDesign:Card>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock
+	                Margin="0,8,0,8"
+	                Style="{StaticResource MaterialDesignSubheadingTextBlock}">
+	                Ambil Foto
+                        </TextBlock>
+                        <Button x:Name="btn_ambil"
+	                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+	                    ToolTip="MaterialDesignFloatingActionMiniButton" Margin="5,0,0,0" Click="btn_ambil_Click">
+                            <materialDesign:PackIcon
+		                    Width="24"
+		                    Height="24"
+		                    Kind="Camera" />
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Bottom" Margin="0,20,0,0">
+                <Button 
+                        x:Name="btn_simpan"
+                        Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        ToolTip="Simpan" Click="btn_simpan_Click" Margin="10,0">
+                    <materialDesign:PackIcon Kind="ContentSave"/>
+                </Button>
+            </DockPanel>
+
+        </DockPanel>
+    </Grid>
+</UserControl>
